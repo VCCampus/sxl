@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls:*)",
+      "Bash(sudo chown:*)",
+      "Bash(make:*)",
+      "Bash(timeout 300 make build)",
+      "Bash(podman exec:*)",
+      "Bash(gh issue view:*)",
+      "Bash(podman info:*)",
+      "Bash(podman system:*)",
+      "Bash(gh issue create:*)",
+      "Bash(podman images:*)",
+      "Bash(podman logs:*)",
+      "Bash(podman ps:*)",
+      "Bash(gh issue comment:*)",
+      "Bash(podman rm:*)",
+      "Bash(podman build:*)",
+      "Bash(find:*)",
+      "Bash(grep:*)",
+      "Bash(podman network inspect:*)",
+      "Bash(podman stop:*)",
+      "Bash(podman inspect:*)"
+    ],
+    "deny": []
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "autoapprove": [
+    {
+      "tool": "str_replace_editor",
+      "patterns": [
+        {
+          "pattern": "docs/**",
+          "reason": "Auto-approve all documentation file edits"
+        },
+        {
+          "pattern": "logs/**",
+          "reason": "Auto-approve all documentation file edits"
+        },
+        {
+          "pattern": "/tmp/**",
+          "reason": "Auto-approve all temporary file edits"
+        }
+      ]
+    },
+    {
+      "tool": "bash",
+      "commands": [
+        {
+          "command": "git diff*",
+          "reason": "Auto-approve git diff operations"
+        },
+        {
+          "command": "pnpm build",
+          "reason": "Auto-approve pnpm build"
+        },
+        {
+          "command": "cargo check",
+          "reason": "Auto-approve cargo check"
+        },
+        {
+          "command": "cargo build*",
+          "reason": "Auto-approve cargo build operations"
+        },
+        {
+          "command": "chmod +x *",
+          "reason": "Auto-approve making scripts executable"
+        },
+        {
+          "command": "./scripts/*",
+          "reason": "Auto-approve executing project scripts"
+        },
+        {
+          "command": "scripts/*",
+          "reason": "Auto-approve executing project scripts without ./"
+        }
+      ]
+    },
+    {
+      "tool": "str_replace_based_edit_tool",
+      "patterns": [
+        {
+          "pattern": "docs/**",
+          "reason": "Auto-approve documentation edits"
+        },
+        {
+          "pattern": "logs/**",
+          "reason": "Auto-approve documentation edits"
+        },
+        {
+          "pattern": "/tmp/**",
+          "reason": "Auto-approve temporary file edits"
+        }
+      ]
+    },
+    {
+      "tool": "read",
+      "patterns": [
+        {
+          "pattern": "docs/**",
+          "reason": "Auto-approve reading documentation files"
+        }
+      ]
+    },
+    {
+      "tool": "webfetch",
+      "domains": [
+        {
+          "domain": "*",
+          "reason": "Allow access to all domains for web fetching"
+        }
+      ]
+    }
+  ],
+  "preferences": {
+    "auto_create_scripts": true,
+    "auto_execute_scripts": true,
+    "allow_all_domains_webfetch": true
+  }
+}
