@@ -30,16 +30,19 @@
             
             <!-- Desktop Layout -->
             <div class="md:flex md:items-center md:justify-center">
-              <!-- Content -->
-              <div class="md:w-5/12" :class="{ 'md:text-right': index % 2 === 1 }">
+              <!-- Left Content (for even index) -->
+              <div v-if="index % 2 === 0" class="md:w-5/12 md:text-left">
                 <div class="process-card bg-gradient-to-br from-white to-gray-50 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:scale-105 border border-gray-100">
-                  <div class="text-4xl mb-4" :class="{ 'md:text-right': index % 2 === 1 }">
+                  <div class="text-4xl mb-4">
                     {{ step.icon }}
                   </div>
                   <h3 class="text-2xl font-bold mb-4 text-gray-800">{{ step.title }}</h3>
                   <p class="text-gray-600 leading-relaxed">{{ step.description }}</p>
                 </div>
               </div>
+              
+              <!-- Left Spacer (for odd index) -->
+              <div v-if="index % 2 === 1" class="md:w-5/12"></div>
               
               <!-- Timeline Node (Desktop) -->
               <div class="hidden md:flex md:w-2/12 md:justify-center">
@@ -51,8 +54,19 @@
                 </div>
               </div>
               
-              <!-- Spacer -->
-              <div class="md:w-5/12"></div>
+              <!-- Right Content (for odd index) -->
+              <div v-if="index % 2 === 1" class="md:w-5/12 md:text-left">
+                <div class="process-card bg-gradient-to-br from-white to-gray-50 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:scale-105 border border-gray-100">
+                  <div class="text-4xl mb-4">
+                    {{ step.icon }}
+                  </div>
+                  <h3 class="text-2xl font-bold mb-4 text-gray-800">{{ step.title }}</h3>
+                  <p class="text-gray-600 leading-relaxed">{{ step.description }}</p>
+                </div>
+              </div>
+              
+              <!-- Right Spacer (for even index) -->
+              <div v-if="index % 2 === 0" class="md:w-5/12"></div>
             </div>
           </div>
         </div>
