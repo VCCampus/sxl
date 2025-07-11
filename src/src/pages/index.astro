@@ -1,0 +1,142 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { siteConfig } from '../data/content.js';
+
+// Import all sections
+import HeroSection from '../components/sections/HeroSection.vue';
+import BenefitsSection from '../components/sections/BenefitsSection.vue';
+import ProcessSection from '../components/sections/ProcessSection.vue';
+import TeamSection from '../components/sections/TeamSection.vue';
+import TestimonialsSection from '../components/sections/TestimonialsSection.vue';
+import FaqSection from '../components/sections/FaqSection.vue';
+import CtaSection from '../components/sections/CtaSection.vue';
+import Footer from '../components/common/Footer.vue';
+
+const pageTitle = `${siteConfig.title} - ${siteConfig.description}`;
+const pageDescription = siteConfig.description;
+const pageKeywords = siteConfig.keywords;
+---
+
+<Layout title={pageTitle} description={pageDescription} keywords={pageKeywords}>
+  <main class="main-content">
+    <!-- Hero Section -->
+    <HeroSection client:load />
+    
+    <!-- Benefits Section -->
+    <BenefitsSection client:load />
+    
+    <!-- Process Section -->
+    <ProcessSection client:load />
+    
+    <!-- Team Section -->
+    <TeamSection client:load />
+    
+    <!-- Testimonials Section -->
+    <TestimonialsSection client:load />
+    
+    <!-- FAQ Section -->
+    <FaqSection client:load />
+    
+    <!-- CTA Section -->
+    <CtaSection client:load />
+    
+    <!-- Footer -->
+    <Footer client:load />
+  </main>
+</Layout>
+
+<style>
+.main-content {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Ensure proper spacing between sections */
+.main-content > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Loading animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.main-content {
+  animation: fadeIn 0.8s ease;
+}
+
+/* Parallax effect for sections */
+@media (min-width: 1024px) {
+  .main-content > section:nth-child(even) {
+    transform: translateZ(0);
+  }
+}
+
+/* Prevent horizontal scroll on mobile */
+@media (max-width: 768px) {
+  .main-content {
+    overflow-x: hidden;
+    width: 100%;
+  }
+}
+</style>
+
+<script>
+// Add intersection observer for performance
+if (typeof window !== 'undefined') {
+  // Lazy load sections as they come into view
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '50px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+      }
+    });
+  }, observerOptions);
+
+  // Observe all sections
+  document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  });
+
+  // Smooth scroll for anchor links
+  document.addEventListener('click', (e) => {
+    if (e.target.tagName === 'A' && e.target.getAttribute('href')?.startsWith('#')) {
+      e.preventDefault();
+      const targetId = e.target.getAttribute('href').substring(1);
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    }
+  });
+
+  // Add loading states
+  window.addEventListener('load', () => {
+    document.body.classList.add('loaded');
+  });
+}
+</script>
