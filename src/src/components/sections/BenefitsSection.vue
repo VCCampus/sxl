@@ -4,9 +4,18 @@
       <!-- Section Header -->
       <div class="text-center mb-16">
         <h2 class="section-title gradient-text">{{ benefitsSection.title }}</h2>
-        <p class="section-subtitle text-xl font-medium text-blue-600 mb-4">
-          {{ benefitsSection.subtitle }}
-        </p>
+        <!-- B站视频组件 -->
+        <div class="video-container mb-8">
+          <iframe 
+            src="//player.bilibili.com/player.html?bvid=BV1pW4y1M7JQ&page=1&autoplay=1&high_quality=1"
+            scrolling="no" 
+            border="0" 
+            frameborder="no" 
+            framespacing="0" 
+            allowfullscreen="true"
+            class="w-full h-64 md:h-96 rounded-xl shadow-lg"
+          ></iframe>
+        </div>
         <p class="text-lg text-gray-600">
           {{ benefitsSection.description }}
         </p>
@@ -162,6 +171,19 @@ export default {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.video-container iframe {
+  aspect-ratio: 16/9;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 /* Mobile Optimizations */

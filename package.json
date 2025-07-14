@@ -1,0 +1,26 @@
+{
+  "name": "sxl",
+  "version": "1.0.0",
+  "description": "将原先 sxl.com 的官网迁移为自主发布主机中的静态网站",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VCCampus/sxl.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VCCampus/sxl/issues"
+  },
+  "homepage": "https://github.com/VCCampus/sxl#readme",
+  "dependencies": {
+    "playwright": "^1.54.1"
+  }
+}

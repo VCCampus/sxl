@@ -159,7 +159,7 @@ export const bookSection = {
     title: "《从零到英雄》",
     author: "段建松",
     description: "校园VC在清华大学x-lab的创业营教材，由北京出版社出版，得到李开复、俞敏洪等名人的全力举荐！在微信读书上可以搜索到~",
-    cover: "/images/zero-to-hero-book.png",
+    cover: "/images/zero-to-hero-book.jpg",
     readUrl: "https://weread.qq.com/",
     highlights: [
       "清华大学x-lab创业营教材",

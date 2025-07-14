@@ -70,15 +70,7 @@
           </div>
         </div>
         
-        <!-- Load More Button -->
-        <div class="text-center mt-8" v-if="!showAllPhotos && testimonialsSection.gallery.length > 12">
-          <button 
-            @click="loadMorePhotos"
-            class="btn btn-secondary px-6 py-3 rounded-full hover:scale-105 transition-all duration-300"
-          >
-            查看更多照片
-          </button>
-        </div>
+        <!-- 所有照片懒加载展示，移除查看更多按钮 -->
       </div>
       
       <!-- Modal for Photo Viewer -->
@@ -141,9 +133,8 @@ export default {
   },
   computed: {
     displayedPhotos() {
-      return this.showAllPhotos 
-        ? this.testimonialsSection.gallery 
-        : this.testimonialsSection.gallery.slice(0, 12);
+      // 直接显示所有照片，实现懒加载
+      return this.testimonialsSection.gallery;
     }
   },
   methods: {
