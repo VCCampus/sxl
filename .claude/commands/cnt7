@@ -1,0 +1,81 @@
+#!/bin/bash
+
+# Context7 MCP 内置指令
+# 用于获取开源项目的最新文档和代码示例
+
+# 检查 context7-mcp 是否已安装
+if ! command -v context7-mcp &> /dev/null; then
+    echo "错误: context7-mcp 未安装"
+    echo "请运行: npm install -g @upstash/context7-mcp"
+    exit 1
+fi
+
+# 检查 MCP 配置
+if [ ! -f ~/.claude/settings.json ]; then
+    echo "错误: Claude MCP 配置文件不存在"
+    exit 1
+fi
+
+# 如果提供了参数，则显示帮助信息
+if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
+    echo "Context7 MCP 内置指令"
+    echo "用法: use cnt7 [选项]"
+    echo ""
+    echo "选项:"
+    echo "  --help, -h    显示帮助信息"
+    echo "  --status      检查 MCP 服务器状态"
+    echo "  --restart     重启 MCP 服务器"
+    echo ""
+    echo "使用说明:"
+    echo "  在你的 AI 编程提示中直接添加 'use context7' 来获取最新的代码文档和示例"
+    echo "  Context7 会从源代码仓库获取最新的、准确的文档信息"
+    echo ""
+    echo "示例:"
+    echo "  '如何使用 React hooks? use context7'"
+    echo "  '给我一个 Next.js 路由的例子 use context7'"
+    exit 0
+fi
+
+# 检查 MCP 服务器状态
+if [ "$1" = "--status" ]; then
+    echo "检查 Context7 MCP 服务器状态..."
+    
+    # 检查配置文件中是否有 context7 配置
+    if grep -q "context7" ~/.claude/settings.json; then
+        echo "✓ Context7 MCP 服务器已在 Claude 中配置"
+    else
+        echo "✗ Context7 MCP 服务器未在 Claude 中配置"
+        exit 1
+    fi
+    
+    # 检查可执行文件
+    if [ -x "/home/node/.npm-global/bin/context7-mcp" ]; then
+        echo "✓ context7-mcp 可执行文件存在"
+    else
+        echo "✗ context7-mcp 可执行文件不存在或不可执行"
+        exit 1
+    fi
+    
+    echo "Context7 MCP 服务器配置正常"
+    exit 0
+fi
+
+# 重启 MCP 服务器
+if [ "$1" = "--restart" ]; then
+    echo "重启 Context7 MCP 服务器..."
+    # 这里可以添加重启逻辑，如果需要的话
+    echo "请重启 Claude 应用程序以重新加载 MCP 配置"
+    exit 0
+fi
+
+# 默认行为：显示使用提示
+echo "Context7 MCP 已配置完成！"
+echo ""
+echo "使用方法:"
+echo "  在你的 AI 编程提示中添加 'use context7' 来获取最新的代码文档"
+echo ""
+echo "例如:"
+echo "  '如何使用 React hooks? use context7'"
+echo "  '给我一个 Vue.js 组件的例子 use context7'"
+echo ""
+echo "运行 'use cnt7 --help' 查看更多选项"

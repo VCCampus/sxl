@@ -72,15 +72,15 @@
 
 ## 技术栈
 
-**当前技术方案（2025-07-14实施完成）：**
-- **前端框架**: Vue 3.4.0 + Composition API
-- **路由系统**: Vue Router 4 (多页面路由)
-- **构建工具**: Vite 5.3.0
-- **样式框架**: Tailwind CSS 3.4.0
-- **预渲染**: Vite Static Site Generation (SSG)
-- **开发模式**: SPA + 静态生成
-- **包管理**: npm (147个依赖包)
-- **部署**: 静态网站托管
+**当前技术方案（2025-07-15确认）：**
+- **前端框架**: Next.js 15.2.4 (App Router)
+- **UI框架**: React 19
+- **类型系统**: TypeScript 5
+- **样式框架**: Tailwind CSS 3.4.17
+- **组件库**: shadcn/ui (基于 Radix UI)
+- **构建工具**: Next.js 内置构建系统
+- **包管理**: pnpm
+- **部署**: 静态网站生成 (Next.js Static Export)
 
 **历史技术方案（已迁移至disused/）：**
 - **Astro版本**: Astro 4.x + Vue 3.4.0 (单页应用) → `disused/astro/`
@@ -170,64 +170,60 @@
 # 进入开发目录
 cd src
 
-# 安装依赖
-npm install
+# 安装依赖 (使用 pnpm)
+pnpm install
 
 # 开发环境
-npm run dev
+pnpm dev
 
-# 构建生产版本
-npm run build
+# 构建生产版本 (输出到 out/ 目录)
+pnpm build
 
-# 预览构建结果
-npm run preview
+# 启动生产服务器
+pnpm start
+
+# 代码检查
+pnpm lint
 ```
 
 ### 开发流程
-1. 开发环境运行：`cd src && npm run dev`
-2. 开发完成后：`cd src && npm run build`
-3. 部署：`public/` 目录内容已自动生成，可直接部署到静态网站托管服务
+1. 开发环境运行：`cd src && pnpm dev`
+2. 开发完成后：`cd src && pnpm build`
+3. 部署配置：需要配置 Next.js 静态导出到根目录 `public/` 
+4. 部署：`public/` 目录内容生成后，可直接部署到静态网站托管服务
 
 ## 核心功能实现
 
-### 1. 首页 (Home.vue)
-- **位置**: `src/pages/Home.vue`
-- **功能**: Hero区块、核心价值展示、统计数据
-- **特色**: 渐变背景、动画效果、CTA按钮组
+### 1. 主页面 (page.tsx)
+- **位置**: `src/app/page.tsx`
+- **功能**: Hero区块、课程体系、团队介绍、学员反馈
+- **特色**: 渐变背景、shadcn/ui 组件、响应式设计
+- **结构**: 单页应用，包含所有功能模块
 
-### 2. 关于我们 (About.vue)
-- **位置**: `src/pages/About.vue`
-- **功能**: 数字创业精英班、学习流程、使命愿景
-- **特色**: B站视频嵌入、流程时间线、渐变设计
+### 2. 根布局 (layout.tsx)
+- **位置**: `src/app/layout.tsx`
+- **功能**: HTML 结构、元数据、主题提供者
+- **特色**: TypeScript、SEO 优化、字体配置
 
-### 3. 服务项目 (Services.vue)
-- **位置**: `src/pages/Services.vue`
-- **功能**: 四大业务体系、服务流程、外链跳转
-- **特色**: 交互式卡片、外部链接、访问权限提醒
+### 3. 组件库 (shadcn/ui)
+- **位置**: `src/components/ui/`
+- **组件**: 40+ React 组件 (Button, Card, Badge, Dialog 等)
+- **特色**: Radix UI 基础、Tailwind CSS 样式、TypeScript 支持
 
-### 4. 团队介绍 (Team.vue)
-- **位置**: `src/pages/Team.vue`
-- **功能**: 核心团队、公司理念、顾问团队、招聘信息
-- **特色**: 团队成员卡片、技能标签、价值观展示
+### 4. 样式系统
+- **全局样式**: `src/app/globals.css`
+- **框架**: Tailwind CSS 3.4.17
+- **特点**: 移动端优先、暗黑模式支持、自定义变量
 
-### 5. 成功案例 (Success.vue)
-- **位置**: `src/pages/Success.vue`
-- **功能**: 明星项目、学员心声、影响力数据、媒体报道
-- **特色**: 项目统计、评分系统、成就标签
+### 5. 主题管理
+- **组件**: `src/components/theme-provider.tsx`
+- **功能**: 暗黑/明亮模式切换
+- **特色**: next-themes 集成、持久化状态
 
-### 6. 联系我们 (Contact.vue)
-- **位置**: `src/pages/Contact.vue`
-- **功能**: 咨询表单、联系方式、常见问题、社交媒体
-- **特色**: 表单验证、FAQ折叠、工作时间显示
-
-### 7. 布局组件
-- **Header**: `src/components/layout/Header.vue` - 导航菜单、移动端汉堡菜单
-- **Footer**: `src/components/layout/Footer.vue` - 备案信息、快速链接、联系方式
-
-### 8. 响应式设计
-- **框架**: Tailwind CSS 3.4.0
+### 6. 响应式设计
+- **框架**: Tailwind CSS 响应式系统
 - **特点**: 移动端优先、自适应布局、渐变设计系统
-- **动画**: CSS transition + Vue动画、Intersection Observer
+- **交互**: Lucide React 图标、动画效果
 
 ## 内容管理
 

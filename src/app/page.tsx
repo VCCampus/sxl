@@ -51,7 +51,7 @@ export default function CampusVCLanding() {
                   </span>
                 </h1>
                 <p className="text-xl text-gray-600 leading-relaxed">
-                  从零到英雄，寻找改变世界的疯子！培养十年后的数字创业CEO，通过"玩创投"三主线体系，让每一个创业梦想落地。
+                  从零到英雄，寻找改变世界的疯子！培养十年后的数字创业CEO，通过&ldquo;玩创投&rdquo;三主线体系，让每一个创业梦想落地。
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
@@ -137,7 +137,7 @@ export default function CampusVCLanding() {
       <section id="courses" className="py-16 px-4">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center space-y-6 mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">"玩创投"三主线课程体系</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">&ldquo;玩创投&rdquo;三主线课程体系</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               通过项目线、创业线、数字线三大主线，全方位培养数字创业CEO
             </p>
@@ -215,7 +215,7 @@ export default function CampusVCLanding() {
               </div>
               <div className="space-y-4 text-gray-700">
                 <p>
-                  著名企业家、社会知名人士，同时担任清华x-lab兼职顾问、清华iCenter创客导师、北京大学研究生院投资导师、教育部"互联网+"创新创业大赛评委等。
+                  著名企业家、社会知名人士，同时担任清华x-lab兼职顾问、清华iCenter创客导师、北京大学研究生院投资导师、教育部&ldquo;互联网+&rdquo;创新创业大赛评委等。
                 </p>
                 <p>畅销书《创业的乐趣》和《从零到英雄》作者，曾任微软Windows产品经理和IDG战略咨询公司In-Stat总经理。</p>
               </div>
@@ -365,7 +365,7 @@ export default function CampusVCLanding() {
                 <CardContent className="p-8">
                   <div className="space-y-4">
                     <Quote className="h-8 w-8 text-pink-500 opacity-50" />
-                    <p className="text-gray-700 leading-relaxed">"{testimonial.content}"</p>
+                    <p className="text-gray-700 leading-relaxed">&ldquo;{testimonial.content}&rdquo;</p>
                     <div className="flex items-center space-x-1">
                       {Array.from({ length: testimonial.rating }).map((_, i) => (
                         <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
@@ -470,6 +470,15 @@ export default function CampusVCLanding() {
           </div>
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
             <p>&copy; 2024 校园VC. All rights reserved.</p>
+            <p className="mt-2 text-sm">
+              <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer" className="hover:text-white">
+                京ICP备2021017602号
+              </a>
+              {' | '}
+              <a href="https://beian.mps.gov.cn/" target="_blank" rel="noopener noreferrer" className="hover:text-white">
+                京公网安备11010802035175号
+              </a>
+            </p>
           </div>
         </div>
       </footer>
